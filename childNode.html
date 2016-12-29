@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+</head>
+<body>
+<div>
+    javascript
+    <p>javascript</p>
+    <div><a>jQuery</a></div>
+    <h5>PHP</h5>
+</div>
+
+<div>javascript<p>javascript</p><div><a>jQuery</a></div><h5>PHP</h5></div>
+
+
+
+<script type="text/javascript">
+    var div=document.getElementsByTagName("div")[0];  //指定第几个div
+    var i;""
+    var divchild=div.childNodes;
+
+    for(i=0;i<divchild.length;i++){
+        document.write(i+" ");
+        document.write(divchild[i].nodeName+" ");
+        document.write(divchild[i].nodeValue+" ");
+        document.write(divchild[i].nodeType+" <br>");
+
+    }
+
+    document.write("<br><br><br><br>调整写法后：<br><br>")
+
+
+    var div2=document.getElementsByTagName("div")[2];  //指定第几个div
+    document.write(div2.lastChild+"<br>");
+
+    var divchild2=div2.childNodes;
+    var j;
+    for(j=0;j<divchild.length;j++){
+        document.write(j+" ");
+        document.write(divchild2[j].nodeName+" ");
+        document.write(divchild2[j].nodeValue+" ");
+        document.write(divchild2[j].nodeType+" <br>");
+
+    }
+
+</script>
+
+<img src="childnode.png" width="1000" height="400">
+</body>
+</html>

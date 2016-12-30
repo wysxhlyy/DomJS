@@ -20,12 +20,19 @@
     var div=document.getElementsByTagName("div")[0];  //指定第几个div
     var i;""
     var divchild=div.childNodes;
+    var arrayOfNodes=Array.prototype.slice.call(divchild,0); //NodeList本身不是array，用这个方法转化成array.
+
 
     for(i=0;i<divchild.length;i++){
+
         document.write(i+" ");
         document.write(divchild[i].nodeName+" ");
         document.write(divchild[i].nodeValue+" ");
         document.write(divchild[i].nodeType+" <br>");
+
+        if(divchild[i].nodeType==3){
+            alert("Node"+i+"is an text");
+        }
 
     }
 

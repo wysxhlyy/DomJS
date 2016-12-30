@@ -1,28 +1,99 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>getAttribute()</title>
+    <title> new document </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+    <script type="text/javascript">
+        /*
+        ÖÆ×÷Ò»¸ö±í¸ñ£¬ÏÔÊ¾°à¼¶µÄÑ§ÉúĞÅÏ¢¡£
+
+         ÒªÇó£º
+
+         1. Êó±êÒÆµ½²»Í¬ĞĞÉÏÊ±±³¾°É«¸ÄÎªÉ«ÖµÎª #f2f2f2£¬ÒÆ¿ªÊó±êÊ±Ôò»Ö¸´ÎªÔ­±³¾°É« #fff
+
+         2. µã»÷Ìí¼Ó°´Å¥£¬ÄÜ¶¯Ì¬ÔÚ×îºóÌí¼ÓÒ»ĞĞ
+
+         3. µã»÷É¾³ı°´Å¥£¬ÔòÉ¾³ıµ±Ç°ĞĞ
+         */
+
+        window.onload = function(){
+           var table=document.getElementById("table");
+            var tr=document.getElementsByTagName("tr");
+            var i;
+            for(i=0;i<tr.length;i++){
+                cb(tr[i]);
+            }
+            // Êó±êÒÆ¶¯¸Ä±ä±³¾°,¿ÉÒÔÍ¨¹ı¸øÃ¿ĞĞ°ó¶¨Êó±êÒÆÉÏÊÂ¼şºÍÊó±êÒÆ³ıÊÂ¼şÀ´¸Ä±äËùÔÚĞĞ±³¾°É«¡£
+
+        }
+
+        function cb(obj) {
+            obj.onmouseover=function () {
+                obj.style.backgroundColor="#74f21b";        //Êó±ê¸²¸Ç
+            }
+            obj.onmouseout=function () {
+                obj.style.backgroundColor="#fff";           //Êó±êÒÆ¿ª
+            };
+        }
+
+
+        
+        function addNode() {
+            var row=document.createElement("tr");
+            var id=document.createElement("td");
+            id.innerHTML="id";
+            var name=document.createElement("td");
+            name.innerHTML="name";
+            var action=document.createElement("td");
+            action.innerHTML="value";
+            var table=document.getElementById("table");
+            table.appendChild(row);
+            row.appendChild(id);
+            row.appendChild(name);
+            row.appendChild(action);
+        }
+
+        // ±àĞ´Ò»¸öº¯Êı£¬¹©Ìí¼Ó°´Å¥µ÷ÓÃ£¬¶¯Ì¬ÔÚ±í¸ñµÄ×îºóÒ»ĞĞÌí¼Ó×Ó½Úµã£»
+        function deleteNode() {
+            var clicked=event.srcElement;
+            var table=document.getElementById("table");
+            var tr=clicked.parentNode.parentNode;
+            var i;
+            for(i=0;i<tr.childNodes.length;i++){
+                if(tr.childNodes[i].nodeType==1){
+                    tr.childNodes[i].remove();
+                }
+            }
+        }
+
+
+        // ´´½¨É¾³ıº¯Êı
+
+
+
+    </script>
 </head>
 <body>
-<p id="intro">è¯¾ç¨‹åˆ—è¡¨</p>
-<ul>
-    <li title="ç¬¬1ä¸ªli">HTML</li>
-    <li>CSS</li>
-    <li title="ç¬¬3ä¸ªli">JavaScript</li>
-    <li title="ç¬¬4ä¸ªli">Jquery</li>
-    <li>Html5</li>
-</ul>
-<p>ä»¥ä¸‹ä¸ºè·å–çš„ä¸ä¸ºç©ºçš„liæ ‡ç­¾titleå€¼:</p>
-<script type="text/javascript">
-    var con=document.getElementsByTagName("li");
-    for (var i=0; i< con.length;i++){
-        var text=con[i].getAttribute("title");
-        if(text!=null)
-        {
-            document.write(text+"<br>");
-        }
-    }
-</script>
+<table border="1" width="50%" id="table">
+    <tr>
+        <th>Ñ§ºÅ</th>
+        <th>ĞÕÃû</th>
+        <th>²Ù×÷</th>
+    </tr>
+
+    <tr>
+        <td>xh001</td>
+        <td>ÍõĞ¡Ã÷</td>
+        <td><a href="javascript:;" onclick="deleteNode()">delete</a></td>   <!--ÔÚÉ¾³ı°´Å¥ÉÏÌí¼Óµã»÷ÊÂ¼ş  -->
+    </tr>
+
+    <tr>
+        <td>xh002</td>
+        <td>ÁõĞ¡·¼</td>
+        <td><a href="javascript:;" onclick="deleteNode()">É¾³ı</a></td>   <!--ÔÚÉ¾³ı°´Å¥ÉÏÌí¼Óµã»÷ÊÂ¼ş  -->
+    </tr>
+
+</table>
+<input type="button" value="Ìí¼ÓÒ»ĞĞ"  onclick="addNode()" />   <!--ÔÚÌí¼Ó°´Å¥ÉÏÌí¼Óµã»÷ÊÂ¼ş  -->
 </body>
 </html>
